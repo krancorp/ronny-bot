@@ -37,9 +37,9 @@ bot.on('message', function(data) {
 				if (msg.indexOf('zu hause') !== -1) {
 					bot.postMessageToChannel(toChannel, 'Sollen wir nach Hause fahren oder was?!', params);
 				}
-				if (msg.indexOf('nach hause') !== -1) {
+				/*if (msg.indexOf('nach hause') !== -1) {
 					bot.postMessageToChannel(toChannel, 'Sollen wir nach Hause fahren oder was?!', params);
-				}
+				}*/
 				if (msg.indexOf('kann nichts') !== -1) {
 					bot.postMessageToChannel(toChannel, 'JUNGE! JUNGE! JUNGE!', params);
 				}
