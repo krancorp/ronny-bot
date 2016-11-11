@@ -11,5 +11,5 @@ dict[""] = "";
 dict[""] = "";
 dict[""] = "";*/
 
-module.exports.dict = dict;
+module.exports = dict;
 
