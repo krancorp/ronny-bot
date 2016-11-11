@@ -1,4 +1,5 @@
 var SlackBot = require('slackbots');
+var dict = require('./answers.js')
  
 // create a bot 
 var bot = new SlackBot({
@@ -9,7 +10,6 @@ var params = {as_user:true};
 
 bot.on('start', function (data) {
 	bot.postMessageToGroup('dev', 'BOT RUNNING', params)
-	console.log(data);
 });
 
 bot.on('message', function(data) {
@@ -19,13 +19,13 @@ bot.on('message', function(data) {
 	console.log(data);
 	switch (data.type) {
 		case 'message' : {
-			toChannel ="dev2"
-			bot.getChannelId('schnapsbrennen', function (data) {console.log("Channel: ", data)});
+			toChannel = data.channel
+			console.log(bot.getChannelId('dev2'));
 
-			if(data.channel == bot.getChannelId(toChannel) ) { //schnapsbrennen
+			if(data.channel == data.channel ) {
 				msg = data.text.toLowerCase()
 				if (msg.indexOf('verantwortung') !== -1)	{		
-					bot.postMessageToChannel(toChannel, 'Ich hab doch die Verantwortung!', params);
+					bot.postMessageToChannel(toChannel, dict['verantwortung'], params);
 					console.log("VERANTWORTUNG");
 				}
 				if (msg.indexOf('verdichtet') !== -1) {
