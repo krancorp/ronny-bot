@@ -12,4 +12,3 @@ dict[""] = "";
 dict[""] = "";*/
 
 module.exports = dict;
-
