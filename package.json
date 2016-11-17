@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "slackbots": "^0.5.3"
+  },
+  "devDependencies": {
+    "slackbots": "^0.5.3"
   }
 }
