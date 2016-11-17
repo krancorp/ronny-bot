@@ -1,5 +1,5 @@
 var SlackBot = require('slackbots');
-var dict = require('./answers.js')
+var dict = require('./answer.js')
  
 // create a bot 
 var bot = new SlackBot({
