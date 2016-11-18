@@ -13,6 +13,16 @@ exports.getKoko = function(){
   return exeggutor;
 };
 
+exports.getDatepalm = function(){
+	var exeggutor;
+	var rng = Math.random();
+	exeggutor = ":derficker8:\n";
+	rng = Math.floor((Math.random() * 5) + 1);
+	exeggutor += getKokoBody(rng);
+	exeggutor += ":kokolegs:";
+	return exeggutor;
+}
+
 function getKokoBody(height){
   var exeggBody = "";
   for(var i = 0; i < height; i++){
