@@ -1,26 +1,39 @@
 exports.getKoko = function(){
-  var exeggutor;
+  if(isDigglettInDisguise()){
+    return getDiglett();
+  }
+  var pokemoji;
   var rng = Math.random();
   if(rng > 0.9){
-    exeggutor = ":kokomohr:\n";
+    pokemoji = ":kokomohr:\n";
   }
   else {
-    exeggutor = ":kokohead:\n";
+    pokemoji = ":kokohead:\n";
   }
   rng = Math.floor((Math.random() * 5) + 1);
-  exeggutor += getKokoBody(rng);
-  exeggutor += ":kokolegs:";
-  return exeggutor;
+  pokemoji += getKokoBody(rng);
+  pokemoji += ":kokolegs:";
+  return pokemoji;
 };
-
+function getDiglett(){
+  var diglett = ":digletthead:\n:diglettdirt:\n Hoppla, ein Digda hat den Kranplatz entdichtet.";
+  return diglett;
+}
+function isDigglettInDisguise(pokemoji){
+  var rng = Math.random();
+  if(rng < 0.05){
+    return true;
+  }
+  return false;
+}
 exports.getDatepalm = function(){
-	var exeggutor;
+	var pokemoji;
 	var rng = Math.random();
-	exeggutor = ":derficker8:\n";
+	pokemoji = ":derficker8:\n";
 	rng = Math.floor((Math.random() * 5) + 1);
-	exeggutor += getKokoBody(rng);
-	exeggutor += ":kokolegs:";
-	return exeggutor;
+	pokemoji += getKokoBody(rng);
+	pokemoji += ":kokolegs:";
+	return pokemoji;
 }
 
 function getKokoBody(height){

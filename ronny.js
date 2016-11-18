@@ -32,8 +32,8 @@ bot.on('message', function(data) {
 				if (msg.indexOf('verantwortung') !== -1)	{
 					bot.postMessage(toChannel, dict['verantwortung'], params);
 				}
-				if (msg.indexOf('verdichtet') !== -1) {
-					bot.postMessage(toChannel, dict['verdichtet'], params);
+				if (msg.indexOf('dichtet') !== -1) {
+					bot.postMessage(toChannel, dict['dichtet'], params);
 				}
 				if (msg.indexOf('norwegen') !== -1) {
 					bot.postMessage(toChannel, dict['norwegen'], params);
