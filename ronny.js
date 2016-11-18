@@ -21,7 +21,7 @@ bot.on('message', function(data) {
 	switch (data.type) {
 		case 'message' : {
 			toChannel = data.channel;
-			if(data.channel == data.channel) {
+			if(toChannel && data.subtype !== 'bot_message') {
 				msg = data.text.toLowerCase();
 				if (msg.indexOf('verantwortung') !== -1)	{
 					bot.postMessage(toChannel, dict['verantwortung'], params);
