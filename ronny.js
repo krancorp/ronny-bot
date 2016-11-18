@@ -1,6 +1,6 @@
 var SlackBot = require('slackbots');
 var dict = require('./answer.js');
-
+var kokoBuilder = require('./kokoBuilder.js');
 // create a bot
 var bot = new SlackBot({
     token: 'xoxb-99562714261-fC6JuSV19uhowciMrAMh8ttw',
@@ -23,6 +23,9 @@ bot.on('message', function(data) {
 			toChannel = data.channel;
 			if(data.channel == data.channel) {
 				msg = data.text.toLowerCase();
+        if(msg.indexOf('kokowei') !== -1){
+          bot.postMessage(toChannel, kokoBuilder.getKoko(), params);
+        }
 				if (msg.indexOf('verantwortung') !== -1)	{
 					bot.postMessage(toChannel, dict['verantwortung'], params);
 				}
