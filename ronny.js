@@ -26,6 +26,9 @@ bot.on('message', function(data) {
 				if(msg.indexOf('kokowei') !== -1){
 				  bot.postMessage(toChannel, kokoBuilder.getKoko(), params);
 				}
+				if(msg.indexOf('dattel') !== -1){
+				  bot.postMessage(toChannel, kokoBuilder.getDatepalm(), params);
+				}
 				if (msg.indexOf('verantwortung') !== -1)	{
 					bot.postMessage(toChannel, dict['verantwortung'], params);
 				}
