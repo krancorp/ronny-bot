@@ -26,7 +26,6 @@ bot.on('message', function(data) {
         
         dict.forEach(d => {
           if (d.keys.some(k => {
-            console.log(d, !!~msg.indexOf(k))
             return ~msg.indexOf(k)
           })) {
             bot.postMessage(toChannel, d.message)
