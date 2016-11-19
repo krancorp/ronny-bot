@@ -25,9 +25,7 @@ bot.on('message', function(data) {
 				msg = data.text.toLowerCase();
         
         dict.forEach(d => {
-          if (d.keys.some(k => {
-            return ~msg.indexOf(k)
-          })) {
+          if (d.keys.some(k => ~msg.indexOf(k))) {
             bot.postMessage(toChannel, d.message)
           }
         })
