@@ -24,12 +24,11 @@ bot.on('message', function(data) {
 			toChannel = data.channel;
 			if(toChannel && data.subtype !== 'bot_message' && data.user !== 'U2XGJM07P') {
 				msg = data.text.toLowerCase();
-        if(~msg.indexOf('kokowei')){
-          bot.postMessage(toChannel, kokoBuilder.getKoko(), params);
-        }
         dict.forEach(d => {
           if (d.keys.some(k => ~msg.indexOf(k))) {
-            bot.postMessage(toChannel, d.message, params);
+            var message = d.message
+            if (typeof message === 'function') message = message()
+            bot.postMessage(toChannel, message, params);
           }
         });
 			}

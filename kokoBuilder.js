@@ -15,10 +15,12 @@ exports.getKoko = function(){
   pokemoji += ":kokolegs:";
   return pokemoji;
 };
+
 function getDiglett(){
   var diglett = ":digletthead:\n:diglettdirt:\n Hoppla, ein Digda hat den Kranplatz entdichtet.";
   return diglett;
 }
+
 function isDigglettInDisguise(pokemoji){
   var rng = Math.random();
   if(rng < 0.05){
@@ -26,6 +28,7 @@ function isDigglettInDisguise(pokemoji){
   }
   return false;
 }
+
 exports.getDatepalm = function(){
 	var pokemoji;
 	var rng = Math.random();
