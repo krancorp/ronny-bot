@@ -1,3 +1,5 @@
+'use strict';
+
 const SlackBot = require('slackbots');
 const dict = require('./answer.js');
 

@@ -2,10 +2,10 @@
   "name": "ronny_bot",
   "version": "1.0.0",
   "description": "Finally enjoy all the responsebillity for twenty people in slack! Without any Norwegian features. :-)",
-  "main": "ronny.js",
+  "main": "src/ronny.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ronny.js"
+    "start": "node src/ronny.js"
   },
   "author": "Fellow Developers @KranCorp",
   "license": "ISC",

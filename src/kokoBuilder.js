@@ -1,19 +1,4 @@
-exports.getKoko = function() {
-  if (isDigglettInDisguise()) {
-    return getDiglett();
-  }
-  var pokemoji;
-  var rng = Math.random();
-  if (rng > 0.9) {
-    pokemoji = ':kokomohr:\n';
-  } else {
-    pokemoji = ':kokohead:\n';
-  }
-  rng = Math.floor((Math.random() * 5) + 1);
-  pokemoji += getKokoBody(rng);
-  pokemoji += ':kokolegs:';
-  return pokemoji;
-};
+'use strict';
 
 function getDiglett() {
   var diglett = ':digletthead:\n:diglettdirt:\n Hoppla, ein Digda hat den Kranplatz entdichtet.';
@@ -27,16 +12,6 @@ function isDigglettInDisguise(pokemoji) {
   }
   return false;
 }
-
-exports.getDatepalm = function() {
-  var pokemoji;
-  var rng = Math.random();
-  pokemoji = ':derficker8:\n';
-  rng = Math.floor((Math.random() * 5) + 1);
-  pokemoji += getKokoBody(rng);
-  pokemoji += ':kokolegs:';
-  return pokemoji;
-};
 
 function getKokoBody(height) {
   var exeggBody = '';
@@ -60,3 +35,30 @@ function getKokoBody(height) {
   }
   return exeggBody;
 }
+
+exports.getKoko = function() {
+  if (isDigglettInDisguise()) {
+    return getDiglett();
+  }
+  var pokemoji;
+  var rng = Math.random();
+  if (rng > 0.9) {
+    pokemoji = ':kokomohr:\n';
+  } else {
+    pokemoji = ':kokohead:\n';
+  }
+  rng = Math.floor((Math.random() * 5) + 1);
+  pokemoji += getKokoBody(rng);
+  pokemoji += ':kokolegs:';
+  return pokemoji;
+};
+
+exports.getDatepalm = function() {
+  var pokemoji;
+  var rng = Math.random();
+  pokemoji = ':derficker8:\n';
+  rng = Math.floor((Math.random() * 5) + 1);
+  pokemoji += getKokoBody(rng);
+  pokemoji += ':kokolegs:';
+  return pokemoji;
+};
