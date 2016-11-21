@@ -7,6 +7,7 @@ notifications:
     on_success: change
     on_failure: always
     template:
-      - "%{repository_slug}/%{branch} | Build %{build_number} | %{result}"
-      - "Commit %{commit} by %{author} | Duration: %{elapsed_time}"
-    secure: LWimZkX+VhY9w/9aAA8OIUaIj6AGNcfsMrr0AMsPXAPa+UGWkyv4zwKYqmN/qnIblgfU/2O9aSXP8SZ/CKAuNdNO2Ih6B1TqNF0Yp7wnWvS4x0wEybwSRwyWflk0qCmUiX9VP+3fmNMOh5oHAvQELc4hsW/hGLLPoSe7vIwiUqeWfqbzI3aKS7puThzCBC6yuGy2A3htat1kzzPDfXokwcyMbLuHB5/sTM6SLxs6LQwHaVKv19OR6Z5GVaezzjFsr9Ybictkuf9+ORNPDwhdzXhtTb0O1yF4+z3p3ZBWq5Od3Gmhre7k+HsWHtm5UOPvGS/Vgp4qmNpCE7MZ89LoU9Pm+UWD2612nVEIHIM3l4+MnkQbju8uvm56+m8bcS5r2u3MqcyDav1KMhQbYzHYHzZgDe0UD+hb3wKe/LcsCrI9ddVcMZKItc/5v/iUBBcXW+P5XQ6z4wNEudMsVvcW1k5dCoR2SwGShjT+jsAcysww93INVcRiqrc9KZ1mPuXL/d39QsEhYiDvKiOd8AS05EZa7FKTDi/PVNQd6Dm3XFwy+JVZpmoWplGgAKLDog1UagqinHlR7k22hqgJy/qDhnpug+8PpayXZJp5EjI5mOgv0OugjDLBjzOa3j0G4vIAauNftewrUukbS+iN5AtH04sUZBNKdx1+AWRj5F+1k2k=
+    - "%{repository_slug}/%{branch} | Build %{build_number} | %{result}"
+    - 'Commit %{commit} by %{author} | Duration: %{elapsed_time}'
+    rooms:
+      secure: EhraNP2IqqArHViHFoACtU9gGTnHcd66k7lvfnZyP1Q46T5f6XwXhxJoQCltQqD6KEm8TpC7ZmZ0PQ6nvqyVbRupzcBjuK0Rr1ET+C0nTSK2F5GiSOzN/z/0CVtOp7NueAzncPQuXeQVedmLWdl78HE3roFhddioiRTzL9VGugOa3w5G/a1vnLGRdsuTdFN8eJMKfHTZdXRApjugc7W44jr859DRGIPiuDX5fLlmpEbeW/gEPMEgHvbqrgdZxb6Ok5wcJl3RCGHv9vazIYIcmNGbUHbfcGiRDQZV2qyy7t1l/oeYdUuE6jjBwBLKCId3d7auirc0Ijhpm48sD/a85/I4XQlVsc7sHXL279GFZF9NFvNeIh6dllkBOKW/ZPUfQnaqerF5KouGb9DWphpgWAxJcbPzxWH3Sl+oCOrFg/KiBEQsHoDS861h+RK9yx6EDeJHJLTFqQqilss1cXTS2KfoRz5wQibGaPXOdn2cGcJ3H86c8+t1eGS8PVaQBaTjE0dCfRAkJfhPR/sO6MUqDlZPeMVCAlAzyHr4+WIWCen2LP6ZbD2pFKObLL8XCND7/oWUuyyhCT2zMqLk4jwjMTKBrT2ygpicI5A2WTpJJRpjWaApovaa2yvx1INuB2OGqnJEPQWkF2++HcGZl5Wt+grzeptEj+ZJYbf0iYks/Uo=
