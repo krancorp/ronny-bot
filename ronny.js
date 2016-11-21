@@ -22,7 +22,7 @@ bot.on('message', function(data) {
 	switch (data.type) {
 		case 'message' : {
 			toChannel = data.channel;
-			if(toChannel && data.subtype !== 'bot_message') {
+			if(toChannel && data.subtype !== 'bot_message' && data.user !== 'U2XGJM07P') {
 				msg = data.text.toLowerCase();
         if(~msg.indexOf('kokowei')){
           bot.postMessage(toChannel, kokoBuilder.getKoko(), params);
