@@ -1,6 +1,6 @@
 var SlackBot = require('slackbots');
 var dict = require('./answer.js');
-
+var kokoBuilder = require('./kokoBuilder.js');
 // create a bot
 var bot = new SlackBot({
     token: 'xoxb-99562714261-fC6JuSV19uhowciMrAMh8ttw',
