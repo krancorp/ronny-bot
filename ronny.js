@@ -25,11 +25,11 @@ bot.on('message', function(data) {
 			if(toChannel && data.subtype !== 'bot_message') {
 				msg = data.text.toLowerCase();
         if(~msg.indexOf('kokowei')){
-          bot.postMessage(toChannel, kokoBuilder.getKoko());
+          bot.postMessage(toChannel, kokoBuilder.getKoko(), params);
         }
         dict.forEach(d => {
           if (d.keys.some(k => ~msg.indexOf(k))) {
-            bot.postMessage(toChannel, d.message);
+            bot.postMessage(toChannel, d.message, params);
           }
         });
 			}
