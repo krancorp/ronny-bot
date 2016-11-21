@@ -3,9 +3,11 @@
 const SlackBot = require('slackbots');
 const dict = require('./answer.js');
 
+const config = require('../config.json');
+
 // create a bot
 const bot = new SlackBot({
-  token: 'xoxb-99562714261-fC6JuSV19uhowciMrAMh8ttw',
+  token: config.apiToken,
   name: 'Ronnie Schäfer'
 });
 
