@@ -4,7 +4,7 @@
   "description": "Finally enjoy all the responsebillity for twenty people in slack! Without any Norwegian features. :-)",
   "main": "src/ronny.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/eslint/bin/eslint.js --config .eslintrc src/*",
     "start": "node src/ronny.js"
   },
   "author": "Fellow Developers @KranCorp",
@@ -13,6 +13,7 @@
     "slackbots": "^0.5.3"
   },
   "devDependencies": {
-    "slackbots": "^0.5.3"
+    "slackbots": "^0.5.3",
+    "eslint": "3.10.2"
   }
 }
