@@ -1,6 +1,7 @@
 var SlackBot = require('slackbots');
-var dict = require('./answer.js');
 var kokoBuilder = require('./kokoBuilder.js');
+var dict = require('./answer.js');
+
 // create a bot
 var bot = new SlackBot({
     token: 'xoxb-99562714261-fC6JuSV19uhowciMrAMh8ttw',
@@ -23,12 +24,14 @@ bot.on('message', function(data) {
 			toChannel = data.channel;
 			if(toChannel && data.subtype !== 'bot_message') {
 				msg = data.text.toLowerCase();
-        
+        if(~msg.indexOf('kokowei')){
+          bot.postMessage(toChannel, kokoBuilder.getKoko());
+        }
         dict.forEach(d => {
           if (d.keys.some(k => ~msg.indexOf(k))) {
-            bot.postMessage(toChannel, d.message)
+            bot.postMessage(toChannel, d.message);
           }
-        })
+        });
 			}
 		}
 	}
