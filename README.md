@@ -1,4 +1,5 @@
 # RonnyBot - By KranCorp
+[![Travis](https://img.shields.io/travis/krancorp/ronny-bot.svg?style=flat-square)](https://travis-ci.org/krancorp/ronny-bot)  
 RonnyBot is one of our first and most ambitious Projects at KranCorp.
 RonnyBot aims to imitate a realistic and authentic Cranefriend and Ronny behaviour.
 
