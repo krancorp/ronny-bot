@@ -38,7 +38,7 @@ bot.on('message', function(data) {
               if (typeof message === 'function')
                 message = message();
               if (message.params) {
-                params = message.params;
+                for (var attrname in message.params) { params[attrname] = message.params[attrname];}
                 message = message.msgString;
               }
               bot.postMessage(toChannel, message, params);
