@@ -3,11 +3,9 @@ node_js:
 - '7'
 - '6'
 notifications:
+  email: false
   slack:
     on_success: change
     on_failure: always
-    template:
-    - "%{repository_slug}/%{branch} | Build %{build_number} | %{result}"
-    - 'Commit %{commit} by %{author} | Duration: %{elapsed_time}'
     rooms:
       secure: EhraNP2IqqArHViHFoACtU9gGTnHcd66k7lvfnZyP1Q46T5f6XwXhxJoQCltQqD6KEm8TpC7ZmZ0PQ6nvqyVbRupzcBjuK0Rr1ET+C0nTSK2F5GiSOzN/z/0CVtOp7NueAzncPQuXeQVedmLWdl78HE3roFhddioiRTzL9VGugOa3w5G/a1vnLGRdsuTdFN8eJMKfHTZdXRApjugc7W44jr859DRGIPiuDX5fLlmpEbeW/gEPMEgHvbqrgdZxb6Ok5wcJl3RCGHv9vazIYIcmNGbUHbfcGiRDQZV2qyy7t1l/oeYdUuE6jjBwBLKCId3d7auirc0Ijhpm48sD/a85/I4XQlVsc7sHXL279GFZF9NFvNeIh6dllkBOKW/ZPUfQnaqerF5KouGb9DWphpgWAxJcbPzxWH3Sl+oCOrFg/KiBEQsHoDS861h+RK9yx6EDeJHJLTFqQqilss1cXTS2KfoRz5wQibGaPXOdn2cGcJ3H86c8+t1eGS8PVaQBaTjE0dCfRAkJfhPR/sO6MUqDlZPeMVCAlAzyHr4+WIWCen2LP6ZbD2pFKObLL8XCND7/oWUuyyhCT2zMqLk4jwjMTKBrT2ygpicI5A2WTpJJRpjWaApovaa2yvx1INuB2OGqnJEPQWkF2++HcGZl5Wt+grzeptEj+ZJYbf0iYks/Uo=
