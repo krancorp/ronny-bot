@@ -37,7 +37,7 @@ bot.on('message', function(data) {
               var params = default_params;
               if (typeof message === 'function')
                 message = message();
-              if(message.params) {
+              if (message.params) {
                 params = message.params;
                 message = message.msgString;
               }
