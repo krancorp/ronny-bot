@@ -23,12 +23,14 @@ add('kann nichts', 'Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Jung
 add('kokowei', require('./kokoBuilder.js').getKoko);
 add(['a5','rhein','main','breakdance','club','feiern'],
   function () {
-    var message = 'Also safe?';
-    message.params = {
-      as_user : false,
-      icon_emoji : ':derfickerx:',
-      username : 'Chirs'
-    };
+    var message = {
+      msgString : 'Also safe?',
+      params : {
+        as_user : false,
+        icon_emoji : ':derfickerx:',
+        username : 'Chirs'
+    }};
+    return message;
 });
 
 module.exports = dict;
