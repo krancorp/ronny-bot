@@ -18,9 +18,10 @@ function add(keys, message) {
 add('verantwortung', 'Ich hab doch die Verantwortung über 20 Leute!');
 add(['verdichtet', 'kranplatz'], 'Da soll ich jetzt 60 Tonnen drauf abstellen?!');
 add('norwegen', 'Darum sind die auch nicht in der EU, weil die am Leben vorbeilaufen ... diese Spinnerbande!');
-add('zu hause', 'Sollen wir nach Hause fahr\'n oder wat?');
-add('kann nichts', 'Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge!');
+add('hause', 'Sollen wir nach Hause fahr\'n oder wat?');
+add(['können nichts', 'kann nichts'], 'Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge!');
 add('kokowei', require('./kokoBuilder.js').getKoko);
+add(['dattel', 'sultan', 'großwesir'], require('./kokoBuilder.js').getDatepalm);
 add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern'], require('./chris.js').safe);
 
 module.exports = dict;
