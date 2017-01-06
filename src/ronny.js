@@ -2,6 +2,7 @@
 
 const SlackBot = require('slackbots');
 const dict = require('./answer.js');
+const fs = require('fs');
 
 //Personalize bot parameters
 let botToken, botId;
@@ -31,6 +32,11 @@ const default_params = {
 
 bot.on('start', function () {
   bot.postMessageToGroup('dev', 'BOT RUNNING', default_params, null);
+  fs.access('./presence.txt', err => {
+    if (err) {
+      fs.writeFile('./presence.txt', 'Eine Chronik der Feigheit:\n');
+    }
+  });
 });
 
 bot.on('message', function (data) {
@@ -39,6 +45,12 @@ bot.on('message', function (data) {
   console.log(data);
 
   switch (data.type) {
+    case 'presence_change': {
+      if (data.user === 'U2CDQ2755') { //currently hardcoded to Daniel
+        fs.appendFile('./presence.txt', new Date().toString() + ' : Daniel is ' + data.presence.toString() + '\n');
+      }
+      break;
+    }
     case 'message': {
       const toChannel = data.channel;
       if (toChannel && data.bot_id !== botId) {
