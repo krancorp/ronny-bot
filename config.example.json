@@ -1,4 +1,5 @@
 {
   "apiToken": "",
-  "botId": ""
+  "botId": "",
+  "monitoredPersons": [{"userName": "", "userId": ""}]
 }

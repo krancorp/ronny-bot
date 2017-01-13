@@ -2,6 +2,7 @@
 
 const dict = [];
 
+//noinspection JSValidateJSDoc
 /**
  * Adds a message to ronny
  * @param {string|[string]} keys   And array of keys to trigger the message
@@ -20,8 +21,8 @@ add(['verdichtet', 'kranplatz'], 'Da soll ich jetzt 60 Tonnen drauf abstellen?!'
 add('norwegen', 'Darum sind die auch nicht in der EU, weil die am Leben vorbeilaufen ... diese Spinnerbande!');
 add('hause', 'Sollen wir nach Hause fahr\'n oder wat?');
 add(['können nichts', 'kann nichts'], 'Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge!');
-add('kokowei', require('./kokoBuilder.js').getKoko);
-add(['dattel', 'sultan', 'großwesir'], require('./kokoBuilder.js').getDatepalm);
+add('kokowei', require('./koko-builder.js').getKoko);
+add(['dattel', 'sultan', 'großwesir'], require('./koko-builder.js').getDatepalm);
 add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern'], require('./chris.js').safe);
 
 module.exports = dict;

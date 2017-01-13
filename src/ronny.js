@@ -2,6 +2,7 @@
 
 const SlackBot = require('slackbots');
 const dict = require('./answer.js');
+const CarstenStahl = require('./carsten-stahl');
 
 //Personalize bot parameters
 let botToken, botId;
@@ -37,8 +38,11 @@ bot.on('message', function (data) {
 
   console.log('=============================================');
   console.log(data);
-
   switch (data.type) {
+    case 'presence_change': {
+      CarstenStahl.sniff(data);
+      break;
+    }
     case 'message': {
       const toChannel = data.channel;
       if (toChannel && data.bot_id !== botId) {
