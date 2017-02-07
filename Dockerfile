@@ -1,13 +1,10 @@
-FROM node:argon
+FROM node:alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package.json /usr/src/app/
+COPY package.json /app/
 RUN npm install
 
-COPY . /usr/src/app
+COPY . /app
 
-EXPOSE 80
-EXPOSE 443
-EXPOSE 8080
-CMD ["/bin/sh", "npm start"]
+CMD ["node", "src/ronny.js"]
