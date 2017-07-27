@@ -12,7 +12,7 @@ exports.safe = function () {
   return message;
 };
 
-exports.InverseSafe = function () {
+exports.inverseSafe = function () {
   const message = {
     msgString: 'Hab ich da :A5: gehört?',
     params: {
