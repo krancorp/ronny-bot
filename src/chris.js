@@ -11,3 +11,15 @@ exports.safe = function () {
   };
   return message;
 };
+
+exports.inverseSafe = function () {
+  const message = {
+    msgString: 'Hab ich da :A5: gehört?',
+    params: {
+      as_user: false,
+      icon_emoji: ':derfickerx:',
+      username: 'Chris'
+    }
+  };
+  return message;
+};
