@@ -23,6 +23,6 @@ add('hause', 'Sollen wir nach Hause fahr\'n oder wat?');
 add(['können nichts', 'kann nichts'], 'Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge!');
 add('kokowei', require('./koko-builder.js').getKoko);
 add(['dattel', 'sultan', 'großwesir'], require('./koko-builder.js').getDatepalm);
-add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern'], require('./chris.js').safe);
-
+add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern','11:30'], require('./chris.js').safe);
+add(['safe'], require('./chris.js').inverseSafe);
 module.exports = dict;
