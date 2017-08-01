@@ -52,7 +52,7 @@ bot.on('message', function (data) {
             let message = d.message;
             const params = {as_user: default_params.as_user};
             if (typeof message === 'function')
-              message = message();
+              message = message(data);
             if (message.params) {
               for (const attrname in message.params) {
                 params[attrname] = message.params[attrname];
@@ -66,3 +66,8 @@ bot.on('message', function (data) {
     }
   }
 });
+
+exports.send = function (toChannel, message) {
+  const params = {as_user: default_params.as_user};
+  bot.postMessage(toChannel, message, params);
+};

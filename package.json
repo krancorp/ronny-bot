@@ -10,6 +10,7 @@
   "author": "Fellow Developers @KranCorp",
   "license": "ISC",
   "dependencies": {
+    "reminder": "^0.1.1",
     "slackbots": "^0.5.3"
   },
   "devDependencies": {

@@ -25,4 +25,6 @@ add('kokowei', require('./koko-builder.js').getKoko);
 add(['dattel', 'sultan', 'großwesir'], require('./koko-builder.js').getDatepalm);
 add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern', '11:30'], require('./chris.js').safe);
 add(['safe'], require('./chris.js').inverseSafe);
+add(['remind'], require('./chris.js').remind);
+
 module.exports = dict;
