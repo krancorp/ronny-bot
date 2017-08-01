@@ -20,13 +20,18 @@ exports.inverseSafe = function () {
 };
 
 var Reminder = require('reminder');
+var cranefriend = require('./ronny.js');
+
 exports.remind = function (data) {
+  var time = data.text.toLowerCase().split(' ')[1];
+  console.log('reminding at: ' + time);
   message.msgString = 'Alles klar werde pünktlich beim :A5: sein!';
-  //format
+  //format "remind HH:MM name"
   var remind = new Reminder();
-  var stringArr = data.text.toLowerCase().split(' ');
-  remind.at(stringArr[1], function (date) {
-    console.log('ich erinnere deine mum hart');
+
+  remind.at(time, function (date) {
+    message.msgString = 'Gehe jetzt schnell duschen.';
+    cranefriend.send(message, data.channel);
   });
   return message;
 };
