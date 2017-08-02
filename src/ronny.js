@@ -38,7 +38,6 @@ exports.send = function (message, toChannel) {
     }
   }
   bot.postMessage(toChannel, message.msgString, params);
-  console.log('sending msg');
 };
 
 bot.on('start', function () {
