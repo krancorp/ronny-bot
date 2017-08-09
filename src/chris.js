@@ -1,6 +1,6 @@
 'use strict';
 
-var message = {
+const message = {
   msgString: 'Alles klar werde pünktlich beim :A5: sein!',
   params: {
     as_user: false,
@@ -19,17 +19,17 @@ exports.inverseSafe = function () {
   return message;
 };
 
-var Reminder = require('reminder');
-var cranefriend = require('./ronny.js');
+const Reminder = require('reminder');
+const cranefriend = require('./ronny.js');
 
 exports.remind = function (data) {
-  var time = data.text.toLowerCase().split(' ')[1];
+  const time = data.text.toLowerCase().split(' ')[1];
   console.log('reminding at: ' + time);
   message.msgString = 'Alles klar werde pünktlich beim :A5: sein!';
   //format "remind HH:MM name"
-  var remind = new Reminder();
+  const remind = new Reminder();
 
-  remind.at(time, function (date) {
+  remind.at(time, function () {
     message.msgString = 'Gehe jetzt schnell duschen.';
     cranefriend.send(message, data.channel);
   });
