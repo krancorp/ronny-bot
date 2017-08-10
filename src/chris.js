@@ -1,5 +1,8 @@
 'use strict';
 
+const Reminder = require('reminder');
+const cranefriend = require('./ronny.js');
+
 var message = {
   msgString: 'Alles klar werde pünktlich beim :A5: sein!',
   params: {
@@ -18,9 +21,6 @@ exports.inverseSafe = function () {
   message.msgString = 'Hab ich da :A5: gehört?';
   return message;
 };
-
-var Reminder = require('reminder');
-var cranefriend = require('./ronny.js');
 
 exports.remind = function (data) {
   var time = data.text.toLowerCase().split(' ')[1];

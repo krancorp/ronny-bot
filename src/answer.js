@@ -1,5 +1,8 @@
 'use strict';
 
+const kokoBuilder = require('./koko-builder.js');
+const chris = require('./chris.js');
+
 const dict = [];
 
 //noinspection JSValidateJSDoc
@@ -21,10 +24,10 @@ add(['verdichtet', 'kranplatz'], 'Da soll ich jetzt 60 Tonnen drauf abstellen?!'
 add('norwegen', 'Darum sind die auch nicht in der EU, weil die am Leben vorbeilaufen ... diese Spinnerbande!');
 add('hause', 'Sollen wir nach Hause fahr\'n oder wat?');
 add(['können nichts', 'kann nichts'], 'Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge!');
-add('kokowei', require('./koko-builder.js').getKoko);
-add(['dattel', 'sultan', 'großwesir'], require('./koko-builder.js').getDatepalm);
-add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern', '11:30'], require('./chris.js').safe);
-add(['safe'], require('./chris.js').inverseSafe);
-add(['remind'], require('./chris.js').remind);
+add('kokowei', kokoBuilder.getKoko);
+add(['dattel', 'sultan', 'großwesir'], kokoBuilder.getDatepalm);
+add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern', '11:30'], chris.safe);
+add(['safe'], chris.inverseSafe);
+add(['remind'], chris.remind);
 
 module.exports = dict;
