@@ -30,6 +30,16 @@ const default_params = {
   as_user: true
 };
 
+exports.send = function (message, toChannel) {
+  const params = {as_user: default_params.as_user};
+  if (message.params) {
+    for (const attrname in message.params) {
+      params[attrname] = message.params[attrname];
+    }
+  }
+  bot.postMessage(toChannel, message.msgString, params);
+};
+
 bot.on('start', function () {
   bot.postMessageToGroup('dev', 'BOT RUNNING', default_params, null);
 });
@@ -52,7 +62,7 @@ bot.on('message', function (data) {
             let message = d.message;
             const params = {as_user: default_params.as_user};
             if (typeof message === 'function')
-              message = message();
+              message = message(data);
             if (message.params) {
               for (const attrname in message.params) {
                 params[attrname] = message.params[attrname];

@@ -1,25 +1,37 @@
 'use strict';
 
+const Reminder = require('reminder');
+const cranefriend = require('./ronny.js');
+
+const message = {
+  msgString: 'Alles klar werde pünktlich beim :A5: sein!',
+  params: {
+    as_user: false,
+    icon_emoji: ':derfickerx:',
+    username: 'Chris'
+  }
+};
+
 exports.safe = function () {
-  const message = {
-    msgString: 'Also safe?',
-    params: {
-      as_user: false,
-      icon_emoji: ':derfickerx:',
-      username: 'Chris'
-    }
-  };
+  message.msgString = 'Also safe?';
   return message;
 };
 
 exports.inverseSafe = function () {
-  const message = {
-    msgString: 'Hab ich da :A5: gehört?',
-    params: {
-      as_user: false,
-      icon_emoji: ':derfickerx:',
-      username: 'Chris'
-    }
-  };
+  message.msgString = 'Hab ich da :A5: gehört?';
+  return message;
+};
+
+exports.remind = function (data) {
+  const time = data.text.toLowerCase().split(' ')[1];
+  console.log('reminding at: ' + time);
+  message.msgString = 'Alles klar werde pünktlich beim :A5: sein!';
+  //format "remind HH:MM name"
+  const remind = new Reminder();
+
+  remind.at(time, function () {
+    message.msgString = 'Gehe jetzt schnell duschen.';
+    cranefriend.send(message, data.channel);
+  });
   return message;
 };

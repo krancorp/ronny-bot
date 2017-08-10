@@ -12,7 +12,7 @@ fs.access('./presence.log', err => {
 
 exports.sniff = function (data) {
   for (const suspect of monitoredPersons) {
-    if (suspect.userId == data.user) {
+    if (suspect.userId === data.user) {
       fs.appendFile('./presence.log', new Date().toString() + ' : ' + suspect.userName + ' is '
         + data.presence.toString() + '\n');
     }
