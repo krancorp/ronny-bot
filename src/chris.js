@@ -35,3 +35,8 @@ exports.remind = function (data) {
   });
   return message;
 };
+
+exports.daIsDochNixBroken = function () {
+  message.msgString = 'Da is nix borken, es geht halt nur nicht...';
+  return message;
+};

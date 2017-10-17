@@ -29,5 +29,6 @@ add(['dattel', 'sultan', 'großwesir'], kokoBuilder.getDatepalm);
 add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern', '11:30'], chris.safe);
 add(['safe'], chris.inverseSafe);
 add(['remind'], chris.remind);
+add(['broken'], chris.daIsDochNixBroken);
 
 module.exports = dict;
