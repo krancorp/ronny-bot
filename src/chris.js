@@ -36,7 +36,11 @@ exports.remind = function (data) {
   return message;
 };
 
-exports.daIsDochNixBroken = function () {
-  message.msgString = 'Da is nix borken, es geht halt nur nicht...';
+exports.daIsDochNixBroken = function (data) {
+  message.msgString = 'was heißt broken, es geht nur einfach nicht. ';
+  setTimeout(function () {
+    message.msgString = 'Broken is da nix.';
+    cranefriend.send(message, data.channel);
+  }, 1500);
   return message;
 };
