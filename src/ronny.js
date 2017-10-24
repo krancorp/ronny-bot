@@ -28,7 +28,7 @@ add(['dattel', 'sultan', 'großwesir'], kokoBuilder.getDatepalm);
 
 const params = {as_user: true};
 
-bus.subscribe('message', (data) => {
+bus.subscribe('message', data => {
   const toChannel = data.channel;
   const msg = data.text.toLowerCase();
   dict.forEach(d => {
