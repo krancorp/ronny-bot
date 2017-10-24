@@ -27,7 +27,7 @@ const params = {
   username: 'Chris'
 };
 
-bus.subscribe('message', (data) => {
+bus.subscribe('message', data => {
   const toChannel = data.channel;
   const msg = data.text.toLowerCase();
   dict.forEach(d => {
@@ -39,4 +39,3 @@ bus.subscribe('message', (data) => {
     }
   });
 });
-

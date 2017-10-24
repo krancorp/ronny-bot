@@ -34,10 +34,9 @@ rtmClient.on(RTM_EVENTS.MESSAGE, function handle(data) {
     bus.publish('message', data);
 });
 
-bus.subscribe('write', (data) => {
+bus.subscribe('write', data => {
   rtmClient.sendTyping(data.id);
   setTimeout(function () {
     webClient.chat.postMessage(data.id, data.message, data.params);
   }, Math.log2((data.message.length)) * 500);
 });
-

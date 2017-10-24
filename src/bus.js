@@ -11,4 +11,3 @@ exports.publish = function (topic, data) {
 exports.subscribe = function (topic, data) {
   myEmitter.on(topic, data);
 };
-

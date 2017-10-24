@@ -19,6 +19,6 @@ function sniff(data) {
   }
 }
 
-bus.subscribe('presenceChange', (data) => {
+bus.subscribe('presenceChange', data => {
   sniff(data);
 });
