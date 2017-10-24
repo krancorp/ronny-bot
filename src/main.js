@@ -3,6 +3,7 @@
 require('./index');
 
 const RtmClient = require('@slack/client').RtmClient;
+const WebClient = require('@slack/client').WebClient;
 const RTM_EVENTS = require('@slack/client').RTM_EVENTS;
 const bus = require('./bus');
 
@@ -24,24 +25,19 @@ try {
 }
 
 // create a bot
-const bot = new RtmClient(botToken);
-bot.start();
-bot.on(RTM_EVENTS., function handle(data) {
+const rtmClient = new RtmClient(botToken);
+const webClient = new WebClient(botToken);
+rtmClient.start();
+rtmClient.on(RTM_EVENTS.MESSAGE, function handle(data) {
   bus.publish('log', data);
-  switch (data.type) {
-    case 'presence_change': {
-
-      break;
-    }
-    case 'message': {
-      if (data.bot_id !== botId)
-        bus.publish('message', data);
-      break;
-    }
-  }
+  if (data.bot_id !== botId)
+    bus.publish('message', data);
 });
 
 bus.subscribe('write', (data) => {
-  // bot.postMessage(data.id, data.message, data.params);
+  rtmClient.sendTyping(data.id);
+  setTimeout(function () {
+    webClient.chat.postMessage(data.id, data.message, data.params);
+  }, Math.log2((data.message.length)) * 500);
 });
 
