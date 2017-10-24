@@ -1,78 +1,42 @@
 'use strict';
 
-const SlackBot = require('slackbots');
-const dict = require('./answer.js');
-const CarstenStahl = require('./carsten-stahl');
+const bus = require('./bus');
+const kokoBuilder = require('./koko-builder');
+const dict = [];
 
-//Personalize bot parameters
-let botToken, botId;
-try {
-  const config = require('../config.json');
-  botToken = config.apiToken;
-  botId = config.botId;
-} catch (exception) {
-  if (process.env.BOT_TOKEN && process.env.BOT_ID) {
-    botToken = process.env.BOT_TOKEN;
-    botId = process.env.BOT_ID;
-  } else {
-    console.log('Initialisation Error: Please provide configuration options');
-    process.exit(1);
-  }
+//noinspection JSValidateJSDoc
+/**
+ * Adds a message to ronny
+ * @param {string|[string]} keys   And array of keys to trigger the message
+ * @param {string|function} message to send or a function to return the message
+ */
+function add(keys, message) {
+  if (typeof keys === 'string') keys = [keys];
+  dict.push({
+    keys: keys,
+    message: message
+  });
 }
 
-// create a bot
-const bot = new SlackBot({
-  token: botToken,
-  name: 'Ronnie Schäfer'
-});
+add('verantwortung', 'Ich hab doch die Verantwortung über 20 Leute!');
+add(['verdichtet', 'kranplatz'], 'Da soll ich jetzt 60 Tonnen drauf abstellen?!');
+add('norwegen', 'Darum sind die auch nicht in der EU, weil die am Leben vorbeilaufen ... diese Spinnerbande!');
+add('hause', 'Sollen wir nach Hause fahr\'n oder wat?');
+add(['können nichts', 'kann nichts'], 'Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge, Junge!');
+add('kokowei', kokoBuilder.getKoko);
+add(['dattel', 'sultan', 'großwesir'], kokoBuilder.getDatepalm);
 
-const default_params = {
-  as_user: true
-};
+const params = {as_user: true};
 
-exports.send = function (message, toChannel) {
-  const params = {as_user: default_params.as_user};
-  if (message.params) {
-    for (const attrname in message.params) {
-      params[attrname] = message.params[attrname];
+bus.subscribe('message', (data) => {
+  const toChannel = data.channel;
+  const msg = data.text.toLowerCase();
+  dict.forEach(d => {
+    if (d.keys.some(k => ~msg.indexOf(k))) {
+      let message = d.message;
+      if (typeof message === 'function')
+        message = message(data);
+      bus.publish('write', {id: toChannel, message: message, params: params});
     }
-  }
-  bot.postMessage(toChannel, message.msgString, params);
-};
-
-bot.on('start', function () {
-  bot.postMessageToGroup('dev', 'BOT RUNNING', default_params, null);
-});
-
-bot.on('message', function (data) {
-
-  console.log('=============================================');
-  console.log(data);
-  switch (data.type) {
-    case 'presence_change': {
-      CarstenStahl.sniff(data);
-      break;
-    }
-    case 'message': {
-      const toChannel = data.channel;
-      if (toChannel && data.bot_id !== botId) {
-        const msg = data.text.toLowerCase();
-        dict.forEach(d => {
-          if (d.keys.some(k => ~msg.indexOf(k))) {
-            let message = d.message;
-            const params = {as_user: default_params.as_user};
-            if (typeof message === 'function')
-              message = message(data);
-            if (message.params) {
-              for (const attrname in message.params) {
-                params[attrname] = message.params[attrname];
-              }
-              message = message.msgString;
-            }
-            bot.postMessage(toChannel, message, params);
-          }
-        });
-      }
-    }
-  }
+  });
 });

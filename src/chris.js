@@ -1,46 +1,42 @@
 'use strict';
 
-const Reminder = require('reminder');
-const cranefriend = require('./ronny.js');
+const bus = require('./bus');
+const dict = [];
 
-const message = {
-  msgString: 'Alles klar werde pünktlich beim :A5: sein!',
-  params: {
-    as_user: false,
-    icon_emoji: ':derfickerx:',
-    username: 'Chris'
-  }
-};
-
-exports.safe = function () {
-  message.msgString = 'Also safe?';
-  return message;
-};
-
-exports.inverseSafe = function () {
-  message.msgString = 'Hab ich da :A5: gehört?';
-  return message;
-};
-
-exports.remind = function (data) {
-  const time = data.text.toLowerCase().split(' ')[1];
-  console.log('reminding at: ' + time);
-  message.msgString = 'Alles klar werde pünktlich beim :A5: sein!';
-  //format "remind HH:MM name"
-  const remind = new Reminder();
-
-  remind.at(time, function () {
-    message.msgString = 'Gehe jetzt schnell duschen.';
-    cranefriend.send(message, data.channel);
+//noinspection JSValidateJSDoc
+/**
+ * Adds a message to ronny
+ * @param {string|[string]} keys   And array of keys to trigger the message
+ * @param {string|function} message to send or a function to return the message
+ */
+function add(keys, message) {
+  if (typeof keys === 'string') keys = [keys];
+  dict.push({
+    keys: keys,
+    message: message
   });
-  return message;
+}
+
+add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern', '11:30'], 'Also safe?');
+add(['safe'], 'Hab ich da :A5: gehört?');
+add(['broken'], 'was heißt broken, es geht nur einfach nicht\nbroken is da nix');
+
+const params = {
+  as_user: false,
+  icon_emoji: ':derfickerx:',
+  username: 'Chris'
 };
 
-exports.daIsDochNixBroken = function (data) {
-  message.msgString = 'was heißt broken, es geht nur einfach nicht';
-  setTimeout(function () {
-    message.msgString = 'broken is da nix';
-    cranefriend.send(message, data.channel);
-  }, 1500);
-  return message;
-};
+bus.subscribe('message', (data) => {
+  const toChannel = data.channel;
+  const msg = data.text.toLowerCase();
+  dict.forEach(d => {
+    if (d.keys.some(k => ~msg.indexOf(k))) {
+      let message = d.message;
+      if (typeof message === 'function')
+        message = message(data);
+      bus.publish('write', {id: toChannel, message: message, params: params});
+    }
+  });
+});
+

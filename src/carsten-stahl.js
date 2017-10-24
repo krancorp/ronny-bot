@@ -1,8 +1,8 @@
 'use strict';
 
-const config = require('../config.json');
+const bus = require('./bus');
 const fs = require('fs');
-const monitoredPersons = config.monitoredPersons;
+const monitoredPersons = require('../config.json').monitoredPersons;
 
 fs.access('./presence.log', err => {
   if (err) {
@@ -10,11 +10,15 @@ fs.access('./presence.log', err => {
   }
 });
 
-exports.sniff = function (data) {
+function sniff(data) {
   for (const suspect of monitoredPersons) {
     if (suspect.userId === data.user) {
       fs.appendFile('./presence.log', new Date().toString() + ' : ' + suspect.userName + ' is '
         + data.presence.toString() + '\n');
     }
   }
-};
+}
+
+bus.subscribe('presenceChange', (data) => {
+  sniff(data);
+});
