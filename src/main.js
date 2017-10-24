@@ -2,7 +2,8 @@
 
 require('./index');
 
-const SlackBot = require('slackbots');
+const RtmClient = require('@slack/client').RtmClient;
+const RTM_EVENTS = require('@slack/client').RTM_EVENTS;
 const bus = require('./bus');
 
 //Personalize bot parameters
@@ -23,16 +24,13 @@ try {
 }
 
 // create a bot
-const bot = new SlackBot({
-  token: botToken,
-  name: 'Ronnie Schäfer'
-});
-
-bot.on('message', function (data) {
+const bot = new RtmClient(botToken);
+bot.start();
+bot.on(RTM_EVENTS., function handle(data) {
   bus.publish('log', data);
   switch (data.type) {
     case 'presence_change': {
-      bus.publish('presenceChange', data);
+
       break;
     }
     case 'message': {
@@ -44,6 +42,6 @@ bot.on('message', function (data) {
 });
 
 bus.subscribe('write', (data) => {
-  bot.postMessage(data.id, data.message, data.params);
+  // bot.postMessage(data.id, data.message, data.params);
 });
 
