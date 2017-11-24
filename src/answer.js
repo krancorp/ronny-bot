@@ -3,6 +3,8 @@
 const kokoBuilder = require('./koko-builder.js');
 const chris = require('./chris.js');
 
+const config = require('./config.js');
+
 const dict = [];
 
 //noinspection JSValidateJSDoc
@@ -29,5 +31,6 @@ add(['dattel', 'sultan', 'großwesir'], kokoBuilder.getDatepalm);
 add(['a5', 'rhein', 'main', 'breakdance', 'club', 'feiern', '11:30'], chris.safe);
 add(['safe'], chris.inverseSafe);
 add(['remind'], chris.remind);
+add('<@'+ config.botId.toLowerCase() +'>', 'Ich höhre!');
 
 module.exports = dict;
